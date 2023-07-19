@@ -3,7 +3,7 @@ import inquirer from 'inquirer';
 import qr from 'qr-image';
 import fs from 'node:fs/promises';
 
-let theText = "";
+
 
 const questions = [
 
@@ -26,7 +26,7 @@ const questions = [
 ];
 
 inquirer.prompt(questions).then((answers) => {
-    theText = answers.text;
+    var theText = answers.text;
     if(theText.length > 0){
         var pngFile = qr.image(theText, { type: 'png' });
         var pngFileName = theText.replace(/[^a-z0-9]/gi, '_').toLowerCase();
@@ -38,9 +38,3 @@ inquirer.prompt(questions).then((answers) => {
 });
 
 
-
-
-// inquirer.prompt(questions).then((answers) => {
-//   console.log('\nOrder receipt:');
-//   console.log(JSON.stringify(answers, null, '  '));
-// });
